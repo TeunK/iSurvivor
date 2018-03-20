@@ -1,1 +1,1 @@
-return (keyboard_check(vk_left));
+return (keyboard_check(vk_left) || keyboard_check(ord('A')));

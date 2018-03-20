@@ -69,6 +69,7 @@ if (mouse_enter(x0,y0,x1,y1)) {
     col = c_white;
 }
 
+draw_set_font(ft_ui_msgbox);
 draw_set_color(bg_col);
 draw_rectangle(x0,y0,x1,y1,outline);
 draw_set_color(col);
