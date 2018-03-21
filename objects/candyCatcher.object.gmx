@@ -25,10 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>splash_message = "iSurvivor INC";
-splash_footer = "A game by Teun";
-
-delay = 1 * room_speed;
+            <string>size = 2;
+allowedDistance = 60;
+nearDistance = 40;
+movespeed = 4;
 </string>
           </argument>
         </arguments>
@@ -51,10 +51,33 @@ delay = 1 * room_speed;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>delay--;
-if (delay &lt;= 0) {
-    room_goto(mainMenuRoom);
+            <string>var target_x = undefined;
+var target_y = undefined;
+var tempspeed = undefined;
+
+if (instance_exists(spaceCandy)) {
+    nearestCandy = instance_nearest(x,y,spaceCandy);
+    if (distance_between_objects(Player,nearestCandy) &lt; allowedDistance) {
+        target_x = nearestCandy.x;
+        target_y = nearestCandy.y;
+        tempspeed = movespeed;
+    }
 }
+
+if (is_undefined(target_x) &amp;&amp; is_undefined(target_y)) {
+    target_x = Player.x - 0.5*nearDistance + random(nearDistance);
+    target_y = Player.y - (Player.sprite_height) - nearDistance + random(0.5*nearDistance);
+    if (distance_to_object(Player) &gt; nearDistance) {
+        tempspeed = Player.MOVESPEED;
+    } else {
+        tempspeed = 0.25 * movespeed;
+    }
+}
+
+if (!is_undefined(target_x) &amp;&amp; !is_undefined(target_y)) {
+    move_towards_point(target_x,target_y,tempspeed);
+}
+
 </string>
           </argument>
         </arguments>
@@ -78,9 +101,7 @@ if (delay &lt;= 0) {
           <argument>
             <kind>1</kind>
             <string>draw_set_color(c_white);
-draw_set_halign(fa_center);
-draw_set_valign(fa_middle);
-draw_text(room_width/2,room_height/2,splash_message + "#" + splash_footer);
+draw_rectangle(x-0.5*size,y-0.5*size,x+0.5*size,y+0.5*size,1);
 </string>
           </argument>
         </arguments>

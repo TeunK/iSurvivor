@@ -33,6 +33,7 @@
       <script>scripts\LKEY.gml</script>
     </scripts>
     <script>scripts\mouse_enter.gml</script>
+    <script>scripts\distance_between_objects.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\ft_ui_msgbox</font>
@@ -47,6 +48,7 @@
         <object>objects\PlayerEcho</object>
         <object>objects\PlayerPlatformer</object>
         <object>objects\Player</object>
+        <object>objects\candyCatcher</object>
       </objects>
       <objects name="room">
         <object>objects\Solid</object>
