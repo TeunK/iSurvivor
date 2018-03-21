@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>fallSpeed = 1 + random(2);
 mass = 1 + random(1);
+
+chasedByCatcherId = undefined;
 </string>
           </argument>
         </arguments>

@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>size = 2;
-allowedDistance = 80;
+allowedDistance = 180;
 nearDistance = 40;
 movespeed = 4;
 
@@ -50,6 +50,7 @@ part_emitter_stream(particle_system,emitter1,particle1,5);
 
 target_x = undefined;
 target_y = undefined;
+target = undefined;
 state = "idle";
 findNewSpotResetTime = 2*room_speed;
 findNewSpot = findNewSpotResetTime;
@@ -81,9 +82,10 @@ messageInstance = undefined;
 
 // DEDUCE STATE
 if (instance_exists(spaceCandy)) {
-    var target = instance_nearest(x,y,spaceCandy);
+    target = nearest_unchased_instance(x,y,spaceCandy);
     if (distance_between_objects(Player,target) &lt; allowedDistance) {
         changeState("hunting");
+        target.chasedByCatcherId = self;
     } else if (distance_to_object(Player) &gt; nearDistance) {
         changeState("chasing player");
     } else {
@@ -156,6 +158,20 @@ if (state = "idle" &amp;&amp; distance_to_point(target_x,target_y) &lt; tempspee
 draw_set_color(c_white);
 draw_rectangle(x-0.5*size,y-0.5*size,x+0.5*size,y+0.5*size,1);
 
+if (!is_undefined(target) &amp;&amp; instance_exists(target)) {
+    draw_set_alpha(0.1);
+    if (!is_undefined(target.chasedByCatcherId)) {
+        if (target.chasedByCatcherId == self) {
+            draw_set_color(c_lime);
+        } else {
+            draw_set_color(c_red);
+        }
+    } else {
+        draw_set_color(c_white);
+    }
+    draw_line(x,y,target.x,target.y)
+    draw_set_alpha(1);
+}
 </string>
           </argument>
         </arguments>

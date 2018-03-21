@@ -39,6 +39,8 @@
     <scripts name="candyCatcher">
       <script>scripts\changeState.gml</script>
     </scripts>
+    <script>scripts\instance_nth_nearest.gml</script>
+    <script>scripts\nearest_unchased_instance.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\ft_ui_msgbox</font>
