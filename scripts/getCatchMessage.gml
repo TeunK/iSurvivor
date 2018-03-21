@@ -18,6 +18,7 @@ ds_list_add(messageOptionsList,"Amazing!");
 ds_list_add(messageOptionsList,"Wow");
 ds_list_add(messageOptionsList,"So good.");
 ds_list_add(messageOptionsList,"Got it");
+ds_list_add(messageOptionsList,"Perfect");
 
-return ds_list_find_value(messageOptionsList, round(random(ds_list_size(messageOptionsList)))-1);
+return ds_list_find_value(messageOptionsList, floor(random(ds_list_size(messageOptionsList)))-1);
 

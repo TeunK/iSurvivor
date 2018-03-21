@@ -53,6 +53,8 @@ target_y = undefined;
 state = "idle";
 findNewSpotResetTime = 2*room_speed;
 findNewSpot = findNewSpotResetTime;
+
+messageInstance = undefined;
 </string>
           </argument>
         </arguments>

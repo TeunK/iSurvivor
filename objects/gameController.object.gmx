@@ -32,7 +32,7 @@ windSpeedChangeSpeed = 2;
 windSpeed = 0;
 
 //SPACE CANDY
-candyCreationChance = 0.01;
+candyCreationChance = 0.11;
 </string>
           </argument>
         </arguments>
