@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>size = 2;
-allowedDistance = 60;
+allowedDistance = 80;
 nearDistance = 40;
 movespeed = 4;
 
@@ -79,6 +79,12 @@ if (instance_exists(spaceCandy)) {
         target_x = nearestCandy.x;
         target_y = nearestCandy.y;
         tempspeed = movespeed;
+        if (distance_to_object(nearestCandy) &lt;= tempspeed) {
+            with (nearestCandy) {
+                pickupItem(self,other);
+                instance_destroy();
+            }
+        }
     }
 }
 
@@ -95,7 +101,6 @@ if (is_undefined(target_x) &amp;&amp; is_undefined(target_y)) {
 if (!is_undefined(target_x) &amp;&amp; !is_undefined(target_y)) {
     move_towards_point(target_x,target_y,tempspeed);
 }
-
 </string>
           </argument>
         </arguments>
