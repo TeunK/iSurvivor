@@ -36,6 +36,9 @@
     <script>scripts\distance_between_objects.gml</script>
     <script>scripts\pickupItem.gml</script>
     <script>scripts\getCatchMessage.gml</script>
+    <scripts name="candyCatcher">
+      <script>scripts\changeState.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\ft_ui_msgbox</font>
