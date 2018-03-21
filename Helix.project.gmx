@@ -55,6 +55,11 @@
         <object>objects\RWall</object>
         <object>objects\Ceiling</object>
       </objects>
+      <objects name="items">
+        <object>objects\spaceCandy</object>
+      </objects>
+      <object>objects\gameController</object>
+      <object>objects\inventoryController</object>
     </objects>
     <objects name="menu">
       <object>objects\splashController</object>

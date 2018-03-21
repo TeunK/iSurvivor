@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,39 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>MESSAGE = "O Hi! this is a test message to see how well the line breaking works. There are no real newline characters included in this message so any time a new line starts, this is all calculated by the program :)";
+            <string>inventory = ds_map_create();
+inventory_size = 0;
 
-HINT = "[Press &lt;spacebar&gt; to continue.]";
-FULL_MESSAGE = MESSAGE + " - " + HINT;
+quickbar = ds_map_create();
+quickbar_size = 8;
 
-OUTLINECOLOUR = c_white;
-LINESPACE = font_get_size(ft_ui_msgbox) + 3;
-
-VIEWWIDTH = view_wview[0];
-VIEWHEIGHT = view_hview[0];
-MESSAGEWIDTH = string_width(FULL_MESSAGE);
-MAXWIDTH = 0.8 * VIEWWIDTH;
-LINEWIDTH = min(MESSAGEWIDTH, MAXWIDTH);
-MARGIN = 16;
-BOXWIDTH = LINEWIDTH + 2 * MARGIN;
-
-MAXHEIGHT = 0.2 * VIEWHEIGHT;
-LINECOUNT = ceil(MESSAGEWIDTH / LINEWIDTH);
-MESSAGEHEIGHT = LINESPACE * LINECOUNT;
-BOXHEIGHT = MESSAGEHEIGHT + 2 * MARGIN;
-
-PADDING_BOTTOM = 100;
-
-BOX_X0 = VIEWWIDTH/2 - BOXWIDTH/2;
-BOX_Y0 = VIEWHEIGHT - PADDING_BOTTOM - (2*MARGIN) - BOXHEIGHT;
-BOX_X1 = VIEWWIDTH/2 + BOXWIDTH/2;
-BOX_Y1 = VIEWHEIGHT - PADDING_BOTTOM - (2*MARGIN);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -74,36 +53,21 @@ BOX_Y1 = VIEWHEIGHT - PADDING_BOTTOM - (2*MARGIN);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check(vk_space) {
-    instance_destroy();
+            <string>if (keyboard_check(vk_tab)) {
+    
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="64">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_set_color(c_white)
-draw_set_halign(fa_left);
-draw_set_valign(fa_top);
-draw_roundrect(BOX_X0, BOX_Y0, BOX_X1, BOX_Y1, 1)
-draw_text_ext(BOX_X0 + MARGIN, BOX_Y0 + MARGIN, FULL_MESSAGE, LINESPACE, MAXWIDTH);
+
+var slot_size = 40;
+var margin = 4;
+var quickbar_y0 = room_height-slot_size-margin;
+var quickbar_y1 = quickbar_y0 + slot_size;
+for (i=0; i&lt;quickbar_size; i++) {
+    x0 = (room_width/2) - (0.5*quickbar_size*(slot_size+margin)) + (slot_size+margin)*i;
+    x1 = x0 + slot_size;
+    
+    draw_set_color(c_white);
+    draw_roundrect_ext(x0,quickbar_y0,x1,quickbar_y1,5,5,1);
+}
 </string>
           </argument>
         </arguments>
