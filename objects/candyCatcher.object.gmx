@@ -106,7 +106,7 @@ if (state == "hunting") {
     tempspeed = movespeed;
     if (distance_to_object(target) &lt;= tempspeed) {
         with (target) {
-            pickupItem(self,other);
+            pickupItem(self,1,other);
             instance_destroy();
         }
     }

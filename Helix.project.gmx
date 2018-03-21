@@ -20,6 +20,11 @@
     <sprites name="menu">
       <sprite>sprites\spr_pictureFrame</sprite>
     </sprites>
+    <sprites name="game">
+      <sprites name="items">
+        <sprite>sprites\spr_spaceCandy</sprite>
+      </sprites>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
